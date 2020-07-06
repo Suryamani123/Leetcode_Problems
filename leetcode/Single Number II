@@ -1,0 +1,22 @@
+/* a very interesting concept of bitwise &  operator and modulo 3  */
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int n=nums.size();
+        int res=0;
+        for(int i=0;i<32;i++)
+        {long int s=0;
+            int x=1<<i;
+            for(int j=0;j<n;j++)
+            {
+                s+=nums[j]&x;
+                
+            }
+            if(s%3)
+                res=res|x;
+        }
+        
+        return res;
+    }
+};

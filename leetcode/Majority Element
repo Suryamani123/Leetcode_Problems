@@ -1,0 +1,25 @@
+/*A good question to revisit*/
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        
+        int mjr=0,c=1;
+        for(int i=1;i<nums.size();i++)
+        {
+            if(nums[i]==nums[mjr])
+                c++;
+            else
+            {
+                c--;
+                if(c==0)
+                {
+                    mjr=i;
+                    c=1;
+                }
+            }
+        }
+        return nums[mjr];
+    }
+};
+

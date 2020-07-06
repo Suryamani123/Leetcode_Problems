@@ -1,0 +1,31 @@
+/*  */
+class Solution {
+public:
+    int res(int n){
+         int s=0;
+        while(n)
+        {
+            s+=pow(n%10,2);
+            n=n/10;
+        }
+        return s;
+    }
+    bool isHappy(int n) {
+       map<int,int>m;
+        m[n]=1;
+        if (n==1)
+            return true;
+        else {
+            n=res(n);
+            while(!m[n])
+            {
+                  m[n]=1;
+                  n=res(n);
+           
+             }
+            if (n==1)
+                return true;
+            else return false;
+        }
+    }
+};

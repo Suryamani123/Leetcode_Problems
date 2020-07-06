@@ -1,0 +1,11 @@
+/* since the array is sorted we can use stl function 'lowerbound' or wite a binary search modification */
+
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int index=lower_bound(nums.begin(),nums.end(),target)-nums.begin();
+            return index;
+       
+        
+    }
+};
