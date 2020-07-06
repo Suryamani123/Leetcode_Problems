@@ -1,0 +1,29 @@
+/* good analogy with slow and fast pointer problem in linkedlist cycle detection*/
+#include<bits/stdc++.h>
+#include <numeric>
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int n=nums.size();
+        int slow=nums[0];
+        int fast=nums[0];
+        while(1)
+        {
+            slow=nums[slow];
+            cout<<slow<<"slow ahi"<<endl;
+            fast=nums[nums[fast]];
+                        cout<<fast<<"fast ahi"<<endl;
+
+            if(slow==fast)
+                break;
+            
+        }
+        slow=nums[0];
+        while(slow!=fast)
+        {
+            slow=nums[slow];
+            fast=nums[fast];
+        }
+        return slow;
+    }
+};
