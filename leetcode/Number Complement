@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int findComplement(int num) {
+       int l=floor(log2(num))+1;
+        int res=pow(2,l)-1;
+        res^=num;
+        
+     return   res;
+    }
+    
+};

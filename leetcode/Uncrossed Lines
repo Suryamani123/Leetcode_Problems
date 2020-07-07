@@ -1,0 +1,39 @@
+class Solution {
+public:
+    int lcs(vector<int>& A, vector<int>& B,int la, int lb){
+        int i,j;
+        int arr[la+1][lb+1];
+        for(i=0;i<=la;i++)
+        {
+            for(j=0;j<=lb;j++)
+            {
+                if(i==0||j==0)
+                {
+                    arr[i][j]=0;
+                }
+              else if(A[i-1]==B[j-1])
+                    arr[i][j]=1+arr[i-1][j-1];
+                else{
+                    arr[i][j]=max(arr[i-1][j],arr[i][j-1]);
+                }
+            }
+        }
+        return arr[la][lb];
+        
+        // if(la==0||lb==0)
+        //     return 0;
+        // if(A[la-1]==B[lb-1])
+        //     return 1+lcs(A,B,la-1,lb-1);
+        // else{
+        //     return max(lcs(A,B,la-1,lb),lcs(A,B,la,lb-1));
+        // }
+    }
+    int maxUncrossedLines(vector<int>& A, vector<int>& B) {
+        
+        int la=A.size();
+        int lb=B.size();
+        int res=lcs(A,B,la,lb);
+        return res;
+        
+    }
+};

@@ -1,0 +1,37 @@
+class Solution {
+public:
+    int findJudge(int N, vector<vector<int>>& trust) {
+        long sz=N+1;
+       long m1[sz];
+        long m2[sz];
+        long flag=0,res=-1;
+        memset(m1,0,sizeof(m1));
+        memset(m2,0,sizeof(m2));
+            long  l= trust.size();
+        if(N==1)
+            res=1;
+        else{
+        for(long i=0;i<l;i++)
+        {
+            m1[trust[i][0]]++;
+            m2[trust[i][1]]++;
+            
+            
+        }
+        
+        
+        for(long i=0;i<l;i++)
+        {
+            if(!m1[trust[i][1]]&&(m2[trust[i][1]]==(N-1)))
+            { flag=1;
+               res=trust[i][1];
+             break;
+            }
+        }
+        }
+        return res;
+        
+        
+        
+    }
+};

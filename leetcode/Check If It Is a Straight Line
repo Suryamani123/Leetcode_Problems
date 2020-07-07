@@ -1,0 +1,35 @@
+class Solution {
+public:
+    bool checkStraightLine(vector<vector<int>>& coordinates) {
+        
+    int x1=coordinates[0][0];        
+    int y1=coordinates[0][1];
+        
+      int x2=coordinates[1][0];        
+    int y2=coordinates[1][1];
+        int p=(x2-x1);
+        int q=(y2-y1);
+        int z=p*y1-q*x1;
+       // (y-y1)*p=q*(x-x1);
+      //  p*y=q*x+z; 
+       int flag=0;
+        for (int i=0;i<coordinates.size();i++)
+        {
+          int p_y=coordinates[i][1];
+            
+         int  p_x=coordinates[i][0];
+            
+           int lhs=p*p_y;
+            int rhs=q*(p_x)+z;
+            if(lhs!=rhs)
+                flag=1;
+            
+        }
+        if(flag)
+            return false;
+        else return true;
+        
+        
+        
+    }
+};

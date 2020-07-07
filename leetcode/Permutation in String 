@@ -1,0 +1,52 @@
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) {
+        int l1=s1.length();
+        int l2=s2.length();
+        int arr[26]={0};
+        int brr[26]={0};
+        if(l2<l1)
+            return false;
+        for(int i=0;i<l1;i++)
+        {
+            arr[s1[i]-'a']++;
+        }
+        
+        for(int i=0;i<l1;i++)
+        {
+            brr[s2[i]-'a']++;
+        }
+        int flag=0;
+        for(int i=0;i<26;i++)
+        {
+            if(arr[i]!=brr[i])
+            {
+                flag=1;
+                break;
+            }
+        }
+        if(flag==0)
+            return true;
+        else
+        {
+            for(int i=1;i<=l2-l1;i++)
+            {
+                brr[s2[i-1]-'a']--;
+                brr[s2[i+l1-1]-'a']++;
+                int flag=0;
+                for(int j=0;j<26;j++)
+                {
+                    if(arr[j]!=brr[j])
+                    {
+                        flag=1;
+                        break;
+                    }
+                }
+                if(flag==0)
+                    return true;
+                    
+            }
+        }
+        return false;
+    }
+};

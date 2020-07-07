@@ -1,0 +1,36 @@
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+     long int l=1;
+       long int h=num,flag=0;
+         long int mid=0;
+        while(l<h)
+        { mid=l+(h-l)/2;
+            if((mid*mid)==num)
+            {cout<<mid<<endl;
+                flag=1;
+                 break;
+            }
+            else if((mid*mid)>num)
+            {
+                h=mid-1;
+                
+            }
+            else
+            {
+                l=mid+1;
+            }
+        }
+        if(l==h)
+        {
+            mid=l;
+            if((mid*mid)==num)
+                flag=1;
+        }
+        //cout<<(double)sqrt(104976)<<endl;
+        if(flag||(num==1))
+            return true;
+        else return false;
+        
+    }
+};

@@ -1,0 +1,56 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    bool isCousins(TreeNode* root, int x, int y) {
+        pair<int,int>p;
+       map<int,pair<int,int>>m;
+        //map <node-value,<depth, parent_node-value>>
+        p=make_pair(0,root->val);
+        
+        m.insert(make_pair(root->val,p));
+       
+        stack<TreeNode *>st;
+        TreeNode * ptr;
+         st.push(root);
+        while(!st.empty())
+        {ptr=st.top();
+         st.pop();
+            if(ptr->right)
+            {
+                int depth =m[ptr->val].first;
+               m.insert(make_pair(ptr->right->val,make_pair(depth+1,ptr->val)));
+                st.push(ptr->right);
+            }
+            
+         if(ptr->left)
+            {
+                int depth =m[ptr->val].first;
+               m.insert(make_pair(ptr->left->val,make_pair(depth+1,ptr->val)));
+                st.push(ptr->left);
+            }
+        }
+        
+        int d1=m[x].first;
+        int p1=m[x].second;
+        int d2=m[y].first;
+        int p2=m[y].second;
+        if(d1==d2&&(p1!=p2))
+            return true;
+        else return false;
+        
+        
+        
+        
+        
+    }
+};
