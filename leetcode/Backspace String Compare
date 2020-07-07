@@ -1,0 +1,56 @@
+/*stack implememtation problem */
+
+class Solution {
+public:
+    bool backspaceCompare(string S, string T) {
+        stack<int>st1;
+        stack<int>st2;
+        int l1=S.length(),i;
+        int l2=T.length();
+        for(i=0;i<l1;i++)
+        {
+            if (S[i]!='#')
+            {
+                st1.push(S[i]);
+            }
+            else
+            {
+                if(!st1.empty())
+                {
+                    st1.pop();
+                }
+            }
+        }
+        string s1="",s2="";
+        while(!st1.empty())
+       {
+            s1+=st1.top();
+            st1.pop();
+        }
+        
+        for(i=0;i<l2;i++)
+        {
+            if (T[i]!='#')
+            {
+                st1.push(T[i]);
+            }
+            else
+            {
+                if(!st1.empty())
+                {
+                    st1.pop();
+                }
+            }
+        }
+        
+        while(!st1.empty())
+       {
+            s2+=st1.top();
+            st1.pop();
+        }
+        
+       if(s1==s2)
+           return true;
+        else return false;
+    }
+};

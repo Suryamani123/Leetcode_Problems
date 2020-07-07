@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int maxVowels(string s, int k) {
+        int l=s.length();
+        int arr[l];
+        memset(arr,0,sizeof(arr));
+        if(s[0]=='a'||s[0]=='e'||s[0]=='i'||s[0]=='o'||s[0]=='u')
+            arr[0]=1;
+        
+        for(int i=1;i<l;i++)
+        {
+            if(s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u')
+                 arr[i]=arr[i-1]+1;
+            else
+                 arr[i]=arr[i-1];
+                
+        }
+        
+      
+        int maxm=-1;
+        for(int i=0;i<=l-k;i++){
+            int dif=arr[i+k-1]-arr[i];
+            if(s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u')
+                dif++;
+            maxm=max(dif,maxm);
+            
+        }
+        //cout<<maxm<<endl;
+        return maxm;
+    }
+};
